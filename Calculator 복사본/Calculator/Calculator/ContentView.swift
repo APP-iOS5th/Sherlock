@@ -10,6 +10,8 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var setInput : String = ""
+    @State private var temp : String = ""
+    @State private var isInteger : Bool = true
     @State private var number1 : Double? = 0.0
     @State private var number2 : Double? = 0.0
     @State private var operators : String = ""
@@ -26,17 +28,17 @@ struct ContentView: View {
     func Calculate() -> Double {
         
         switch(operators) {
-            case "+":
+        case "+":
             result = number1! + number2!
-            case "-":
+        case "-":
             result = number1! - number2!
-            case "X":
+        case "X":
             result = number1! * number2!
-            case "/":
+        case "/":
             result = number1! / number2!
-            case "%":
+        case "%":
             result = number1!.truncatingRemainder(dividingBy:number2!)
-            default:
+        default:
             break
         }
         return result
@@ -60,14 +62,16 @@ struct ContentView: View {
                             else if buttonchars.rawValue == "=" {
                                 number2 = Double(setInput)
                                 result = Calculate()
-                                setInput = String(format: "%.2f", result)
+                                isInteger = result.truncatingRemainder(dividingBy: 1.0) == 0 ? true : false
+                                setInput = isInteger ? String(Int(result)) : String(format: "%.2f", result)
                                 number1 = 0.0
                                 number2 = 0.0
+                                
                             }
                             else if buttonchars.rawValue == "%" || buttonchars.rawValue == "/" || buttonchars.rawValue == "X" || buttonchars.rawValue == "-" || buttonchars.rawValue == "+"  {
-                                operators = buttonchars.rawValue
-                                number1 = Double(setInput)
-                                setInput = ""
+                                    operators = buttonchars.rawValue
+                                    number1 = Double(setInput)
+                                    setInput = ""
                                 
                             }
                             else if buttonchars.rawValue == "+/-" {
@@ -78,7 +82,7 @@ struct ContentView: View {
                                     setInput = setInput.replacingOccurrences(of: "-", with: "")
                                 }
                             }
-                        
+                            
                             else if !(setInput.isEmpty && (buttonchars.rawValue == "0" || buttonchars.rawValue == ".")) {
                                 setInput += buttonchars.rawValue
                             }
