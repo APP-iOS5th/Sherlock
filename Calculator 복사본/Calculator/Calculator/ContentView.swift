@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Calculator
-//
-//  Created by mosi on 4/18/24.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -16,6 +9,7 @@ struct ContentView: View {
     @State private var number2 : Double? = 0.0
     @State private var operators : String = ""
     @State private var result : Double = 0.0
+    @State private var done = ""
     
     let buttons : [[CalculatorButtons]] = [
         [ .clear, .negative , .percent, .divide],
@@ -46,11 +40,13 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
-            Text(setInput)
-                .frame(maxWidth: 345, maxHeight: 50, alignment: .trailing)
+            Text(setInput+" ")
+                .frame(maxWidth: 345, maxHeight: 60, alignment: .trailing)
                 .background(.gray)
                 .foregroundColor(.white)
                 .font(.largeTitle)
+                .bold()
+                .cornerRadius(10)
             
             ForEach(buttons, id:\.self) { row in
                 HStack {
@@ -59,19 +55,21 @@ struct ContentView: View {
                             if buttonchars.rawValue == "AC" {
                                 setInput = ""
                             }
-                            else if buttonchars.rawValue == "=" {
+                            else if buttonchars.rawValue == "=" || done == "=" {
                                 number2 = Double(setInput)
                                 result = Calculate()
                                 isInteger = result.truncatingRemainder(dividingBy: 1.0) == 0 ? true : false
                                 setInput = isInteger ? String(Int(result)) : String(format: "%.2f", result)
-                                number1 = 0.0
-                                number2 = 0.0
+                                
+                                
                                 
                             }
                             else if buttonchars.rawValue == "%" || buttonchars.rawValue == "/" || buttonchars.rawValue == "X" || buttonchars.rawValue == "-" || buttonchars.rawValue == "+"  {
-                                    operators = buttonchars.rawValue
-                                    number1 = Double(setInput)
-                                    setInput = ""
+                                operators = buttonchars.rawValue
+                                number1 = Double(setInput)
+                                setInput = ""
+                                
+                                
                                 
                             }
                             else if buttonchars.rawValue == "+/-" {
@@ -81,31 +79,47 @@ struct ContentView: View {
                                 else if setInput.prefix(1) == "-"{
                                     setInput = setInput.replacingOccurrences(of: "-", with: "")
                                 }
-                            }
-                            
-                            else if !(setInput.isEmpty && (buttonchars.rawValue == "0" || buttonchars.rawValue == ".")) {
+                            } else {
                                 setInput += buttonchars.rawValue
                             }
+//                            else if !(setInput.isEmpty && (buttonchars.rawValue == "0" || buttonchars.rawValue == ".")) {
+//                                setInput += buttonchars.rawValue
+//                            }
                             
                         })
                         {
                             if "0" <= buttonchars.rawValue &&  buttonchars.rawValue <= "9" || buttonchars.rawValue == "." {
-                                Text(buttonchars.rawValue)
-                                    .frame(width: 80, height: 50)
-                                    .background(.gray)
-                                    .foregroundColor(.white)
+                                if buttonchars.rawValue == "0" || buttonchars.rawValue == "." {
+                                    Text(buttonchars.rawValue)
+                                        .frame(width:125, height: 80)
+                                        .bold()
+                                        .background(.gray)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(30)
+                                }
+                                else {
+                                    Text(buttonchars.rawValue)
+                                        .frame(width:80, height: 80)
+                                        .bold()
+                                        .background(.gray)
+                                        .foregroundColor(.white)
+                                        .cornerRadius(30)
+                                }
                             }
                             else if buttonchars.rawValue == "AC" || buttonchars.rawValue == "+/-" || buttonchars.rawValue == "%" {
                                 Text(buttonchars.rawValue)
-                                    .frame(width: 80, height: 50)
+                                    .frame(width: 80, height: 80)
+                                    .bold()
                                     .background(.black)
                                     .foregroundColor(.white)
+                                    .cornerRadius(30)
                             }
                             else {
                                 Text(buttonchars.rawValue)
-                                    .frame(width: 80, height: 50)
+                                    .frame(width: 80, height: 80)
                                     .background(.orange)
                                     .foregroundColor(.white)
+                                    .cornerRadius(30)
                             }
                             
                         }
