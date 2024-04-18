@@ -8,171 +8,65 @@
 import SwiftUI
 
 struct ContentView: View {
+    let buttonNumber: [[String]] = [
+        ["AC", "+/-", "%", "/"],
+        ["7", "8", "9", "✕"],
+        ["4", "5", "6", "-"],
+        ["1", "2", "3", "+"],
+        ["0", "0", ".", "="]
+    ]
     
-    @State private var calculate = "33333"
+    @State private var calculate = "0"
     
-    func cacluateAction() {
-        print("click")
+    enum operators: String {
+        case plus = "+"
+        case minus = "-"
+        case multiple = "X"
+        case division = "/"
+        case percent = "%"
+        case initial = "AC"
+        case chgSign = "+/-"
+    }
+    
+    func cacluateAction(formula: String) {
+        
+//        for num in formula {
+//            switch
+//        }
+        //switch for
     }
     
     var body: some View {
         VStack {
             
             Text(calculate)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .trailing)
-                .background(.black)
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .trailing)
+                .padding()
+                .background(.black.opacity(0.7))
                 .foregroundColor(.white)
-                .font(.largeTitle)
+                .font(.system(size: 48))
             
-            HStack {
-                Button(action: cacluateAction){
-                    Text("AC")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("+/-")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("%")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("÷")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.orange)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
+            ForEach(buttonNumber, id: \.self ) { lineNum in
+                HStack {
+                    ForEach(lineNum, id: \.self) { numChar in
+                        Button {
+                            if calculate == "0" {
+                                calculate = numChar
+                            } else {
+                                calculate += numChar
+                            }
+                        } label: {
+                            Text(numChar)
+                                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                .background(.gray.opacity(0.7))
+                                .foregroundColor(.white)
+                                .font(.system(size: 48))
+                                .bold()
+                        }
+                    }
                 }
             }
-            
-            HStack {
-                Button(action: cacluateAction){
-                    Text("7")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("8")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("9")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("✕")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.orange)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-            }
-            
-            HStack {
-                Button(action: cacluateAction){
-                    Text("4")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("5")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("6")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("-")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.orange)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-            }
-            
-            HStack {
-                Button(action: cacluateAction){
-                    Text("1")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("2")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("3")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("+")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.orange)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-            }
-            HStack {
-                Button(action: cacluateAction){
-                    Text("0")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text(".")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.gray)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-                Button(action: cacluateAction){
-                    Text("=")
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .background(.orange)
-                        .foregroundColor(.white)
-                        .font(.largeTitle)
-                }
-            }
-            
         }
-        
     }
 }
 
