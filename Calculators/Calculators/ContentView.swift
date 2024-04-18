@@ -17,13 +17,14 @@ struct ContentView: View {
         ["0", ".", "="]
     ]
     
-    @State var input = "12314"
+    @State var input = "0"
     @State var operators = ""
     @State var isInteger = true
     @State var result = 0.0
     @State var numString1 = ""
     @State var numString2 = ""
 
+    //버튼 각 버튼입력시 동작하는 함수
      func ButtonTapped(_ button: String) {
         switch button {
         case "+", "-", "*", "/", "%":
@@ -63,6 +64,7 @@ struct ContentView: View {
         
     }
     
+    //연산 계산 함수
     func Calculate()  {
         if let number1 = Double(numString1), let number2 = Double(numString2){
             switch(operators) {
