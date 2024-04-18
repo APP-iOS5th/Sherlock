@@ -18,6 +18,7 @@ struct ContentView: View {
     ]
     
     @State var input = "0"
+    @State var temp = ""
     @State var operators = ""
     @State var isInteger = true
     @State var result = 0.0
@@ -30,9 +31,11 @@ struct ContentView: View {
         case "+", "-", "*", "/", "%":
             operators = button
             numString1 = input
-            input = ""
+            input = numString1 == "" ? "0" : ""
         case "AC":
             input = "0"
+            numString1 = ""
+            numString2 = ""
             result = 0.0
         case ".":
             if input.suffix(1) != "." && input.contains(".") == false {
@@ -50,15 +53,20 @@ struct ContentView: View {
             Calculate()
             isInteger = result.truncatingRemainder(dividingBy: 1.0) == 0 ? true : false
             input = isInteger ? String(Int(result)) : String(result)
+            temp = input
             numString1 = ""
             numString2 = ""
         default:
-            if input.contains(".") == false && button != "."  {
+            if temp == input {
                 input = ""+button
             }
+             else if input.contains(".") == false && button != "." && input.prefix(1) == "0" {
+                input = ""+button
+             }
             else {
-                input += button
-            }
+                 input += button
+             }
+        
             
         }
         
