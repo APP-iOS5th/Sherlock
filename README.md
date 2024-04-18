@@ -2,13 +2,13 @@
 
 ## 실습기간 - 24.04.17 ~ 24.05.03
 ## 팀원
-| 이름                                       | 역할  | 프로필사진                                                        |
-|--------------------------------------   |-----|--------------------------------------------------------------|
-| [안성근](https://github.com/mo-si-dev?)    | 팀장  |                                                              |
-| [최광우](https://github.com/madcow95)      | 팀원  | <img src="https://avatars.githubusercontent.com/u/78129823?v=4" width="50" height="50"> |
-| [석지혜](https://github.com/the-hye)       | 팀원  | <img src="https://avatars.githubusercontent.com/u/66719957?v=4" width=“50” height=“50”> |
-| [한상현](https://github.com/yachae96)      | 팀원  | <img src="https://avatars.githubusercontent.com/u/104310516?v=4" width=“50” height=“50”> |
-| [홍준범](https://github.com/KuKaH)         | 팀원  |                                                              |
+| 이름                                   | 역할  |
+|--------------------------------------|-----|
+| [안성근](https://github.com/mo-si-dev?) | 팀장  |
+| [최광우](https://github.com/madcow95)   | 팀원  |
+| [석지혜](https://github.com/the-hye)    | 팀원  |
+| [한상현](https://github.com/yachae96)   | 팀원  |
+| [홍준범](https://github.com/KuKaH)      | 팀원  |
 ---
 ## 실습 내용
 
