@@ -31,7 +31,8 @@ struct ContentView: View {
         case "+", "-", "*", "/", "%":
             operators = button
             numString1 = input
-            input = numString1 == "" ? "0" : ""
+            input = "0"//numString1 == "" ? "0" : "0"
+          
         case "AC":
             input = "0"
             numString1 = ""
