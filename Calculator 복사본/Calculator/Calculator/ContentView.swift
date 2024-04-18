@@ -75,7 +75,7 @@ struct ContentView: View {
                                 
                             }
                             else if buttonchars.rawValue == "+/-" {
-                                if setInput.prefix(1) != "-"{
+                                if setInput.prefix(1) != "-" && setInput != "0" {
                                     setInput = "-"+setInput
                                 }
                                 else if setInput.prefix(1) == "-"{
