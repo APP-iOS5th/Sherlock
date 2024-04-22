@@ -77,9 +77,6 @@ struct ContentView: View {
             .padding()
             .background(.black)
         }
-        .frame(width: .infinity, height: .infinity)
-        .edgesIgnoringSafeArea(.all)
-//        .padding()
     }
     
     func buttonTapped(text: String) {
@@ -94,18 +91,21 @@ struct ContentView: View {
             resultIsShowing = true
             calculateTarget = ""
         } else if text == "=" {
-            
-//            let expression = NSExpression(format: calculateTarget)
-//            if let value = expression.expressionValue(with: nil, context: nil) as? Double {
-//                print(value)
-//                if String(value).contains(".") {
-//                    self.format = "%.2f"
-//                }
-//                calculateTarget = String(format: format, value)
-//            } else {
-//                calculateTarget = "Invalid input"
-//            }
-//            print(calculateTarget)
+            if marks.contains(String(calculateTarget.suffix(1))) {
+                calculateTarget = "Invalid Value"
+                return
+            }
+            let expression = NSExpression(format: calculateTarget)
+            if let value = expression.expressionValue(with: nil, context: nil) as? Double {
+                print(value)
+                if String(value).contains(".") {
+                    self.format = "%.2f"
+                }
+                calculateTarget = String(format: format, value)
+            } else {
+                calculateTarget = "Invalid input"
+            }
+            print(calculateTarget)
         }
     }
 }
