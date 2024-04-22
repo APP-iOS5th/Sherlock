@@ -7,7 +7,6 @@
 
 import SwiftUI
 import SwiftData
-import UIKit
 
 struct ContentView: View {
     
@@ -16,7 +15,9 @@ struct ContentView: View {
     @Query(sort: \Memo.date) var memos: [Memo]
     @Environment(\.modelContext) var modelContext
     
-    @State var isSheetShowing: Bool = false
+    @State var createMemoIsShowing: Bool = false
+    @State var editMemoIsShowing: Bool = false
+    @State var selectedMemo: Memo?
     @State var memoColor: Color = .blue
 
     var body: some View {
@@ -34,11 +35,13 @@ struct ContentView: View {
                     }
                     .padding()
                     .foregroundStyle(.white)
-                    .background(colors.randomElement()!)
+                    .background(Color(UIColor(red: memo.color.red,
+                                              green: memo.color.green,
+                                              blue: memo.color.blue,
+                                              alpha: memo.color.alpha)))
                     .shadow(radius: 3)
                     .padding()
                     .contextMenu {
-                        ShareLink(item: memo.title)
                         Button {
                             modelContext.delete(memo)
                         } label: {
@@ -46,17 +49,23 @@ struct ContentView: View {
                             Text("삭제")
                         }
                     }
-                    .sheet(isPresented: $isSheetShowing, content: {
-                        MemoAddView(selectedMemo: memo, isSheetShowing: $isSheetShowing)
-                            .modelContainer(for: Memo.self)
-                    })
+                    .onTapGesture {
+                        selectedMemo = memo
+                        editMemoIsShowing = true
+                    }
             }
+            .sheet(isPresented: $createMemoIsShowing, content: {
+                MemoAddView(isSheetShowing: $createMemoIsShowing, memoColor: $memoColor, colors: colors)
+                    .modelContainer(for: Memo.self)
+            })
+            .sheet(isPresented: $editMemoIsShowing, content: {
+                MemoEditView(selectedMemo: $selectedMemo, memoEditAppear: $editMemoIsShowing)
+            })
             .navigationTitle("mememo")
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button {
-//                        addMemo()
-                        isSheetShowing = true
+                        createMemoIsShowing = true
                     } label: {
                         Image(systemName: "plus")
                     }
@@ -64,24 +73,6 @@ struct ContentView: View {
             }
             .listStyle(.plain)
         }
-    }
-    
-    func addMemo() {
-        let randomColor: Color = colors.randomElement()!
-        let uiColor = UIColor(randomColor)
-        
-        var red: CGFloat = 0
-        var green: CGFloat = 0
-        var blue: CGFloat = 0
-        var alpha: CGFloat = 0
-        
-        uiColor.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
-        let newMemo = Memo(title: "",
-                           date: Date().currentDateString/*,
-                           color: MemoColor(red: red, green: green, blue: blue, alpha: alpha)*/)
-        
-        modelContext.insert(newMemo)
     }
 }
 

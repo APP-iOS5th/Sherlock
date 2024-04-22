@@ -13,12 +13,12 @@ class Memo {
     var uid: UUID = UUID()
     var title: String
     var date: String
-//    var color: MemoColor
+    var color: MemoColor
     
-    init(title: String, date: String/*, color: MemoColor*/) {
+    init(title: String, date: String, color: MemoColor) {
         self.title = title
         self.date = date
-//        self.color = color
+        self.color = color
     }
 }
 

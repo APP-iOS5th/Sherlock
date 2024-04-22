@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CD2617552BD68F840094518D /* MemoEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD2617542BD68F840094518D /* MemoEditView.swift */; };
 		CDD62F652BD62F9F00EF49D3 /* SimpleMemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD62F642BD62F9F00EF49D3 /* SimpleMemoApp.swift */; };
 		CDD62F672BD62F9F00EF49D3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD62F662BD62F9F00EF49D3 /* ContentView.swift */; };
 		CDD62F692BD62F9F00EF49D3 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDD62F682BD62F9F00EF49D3 /* Item.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CD2617542BD68F840094518D /* MemoEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoEditView.swift; sourceTree = "<group>"; };
 		CDD62F612BD62F9F00EF49D3 /* SimpleMemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CDD62F642BD62F9F00EF49D3 /* SimpleMemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleMemoApp.swift; sourceTree = "<group>"; };
 		CDD62F662BD62F9F00EF49D3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				CDD62F6C2BD62FA000EF49D3 /* Preview Content */,
 				CDD62F742BD62FEE00EF49D3 /* Memo.swift */,
 				CDD62F762BD6376200EF49D3 /* MemoAddView.swift */,
+				CD2617542BD68F840094518D /* MemoEditView.swift */,
 			);
 			path = SimpleMemo;
 			sourceTree = "<group>";
@@ -146,6 +149,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CD2617552BD68F840094518D /* MemoEditView.swift in Sources */,
 				CDD62F672BD62F9F00EF49D3 /* ContentView.swift in Sources */,
 				CDD62F772BD6376200EF49D3 /* MemoAddView.swift in Sources */,
 				CDD62F692BD62F9F00EF49D3 /* Item.swift in Sources */,
