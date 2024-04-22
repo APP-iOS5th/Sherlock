@@ -31,6 +31,7 @@ struct MemoEditView: View {
     @State private var editOrSave: String = "Edit"
     @State private var cancelButton: String = "Cancel"
     @State private var editMode: Bool = true
+    @State private var timer: Timer?
     
     @Binding var selectedMemo: Memo?
     @Binding var memoEditAppear: Bool
@@ -81,6 +82,14 @@ struct MemoEditView: View {
                 title = selectMemo.title
             }
             date = Date().currentDateString
+            
+            timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+                date = Date().currentDateString
+            }
+        }
+        .onDisappear {
+            timer?.invalidate()
+            timer = nil
         }
         .padding()
     }
