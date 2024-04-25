@@ -21,13 +21,6 @@ struct Task: Identifiable {
 }
 
 extension Task {
-    static var tasks = [
-        Task(completed: false, description: "Wake up", priority: .low ),
-        Task(completed: false, description: "Shower", priority: .medium),
-        Task(completed: false, description: "Code", priority: .high),
-        Task(completed: false, description: "Eat", priority: .high ),
-        Task(completed: false, description: "Sleep", priority: .high),
-        Task(completed: false, description: "Get groceries", priority: .high)
-    ]
+    static var tasks = [Task]()
     static var task = tasks[0]
 }
