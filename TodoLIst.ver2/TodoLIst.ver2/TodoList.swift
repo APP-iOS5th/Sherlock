@@ -8,9 +8,9 @@
 import Foundation
 
 enum Priority: String, CaseIterable, Equatable {
-    case high
-    case medium
-    case low
+    case high = "a"
+    case medium = "b"
+    case low = "c"
 }
 
 struct Task: Identifiable {
