@@ -11,7 +11,7 @@
 		AFCE2AD22BD6339600340825 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCE2AD12BD6339600340825 /* ContentView.swift */; };
 		AFCE2AD42BD6339900340825 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFCE2AD32BD6339900340825 /* Assets.xcassets */; };
 		AFCE2AD72BD6339900340825 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFCE2AD62BD6339900340825 /* Preview Assets.xcassets */; };
-		AFCE2ADE2BD63E9000340825 /* MemoAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCE2ADD2BD63E9000340825 /* MemoAddView.swift */; };
+		AFCE2AE02BD74E2000340825 /* MemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFCE2ADF2BD74E2000340825 /* MemoModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,7 +20,7 @@
 		AFCE2AD12BD6339600340825 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AFCE2AD32BD6339900340825 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AFCE2AD62BD6339900340825 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		AFCE2ADD2BD63E9000340825 /* MemoAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoAddView.swift; sourceTree = "<group>"; };
+		AFCE2ADF2BD74E2000340825 /* MemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +53,11 @@
 		AFCE2ACE2BD6339600340825 /* Memo */ = {
 			isa = PBXGroup;
 			children = (
+				AFCE2ADF2BD74E2000340825 /* MemoModel.swift */,
 				AFCE2ACF2BD6339600340825 /* MemoApp.swift */,
 				AFCE2AD12BD6339600340825 /* ContentView.swift */,
 				AFCE2AD32BD6339900340825 /* Assets.xcassets */,
 				AFCE2AD52BD6339900340825 /* Preview Content */,
-				AFCE2ADD2BD63E9000340825 /* MemoAddView.swift */,
 			);
 			path = Memo;
 			sourceTree = "<group>";
@@ -142,7 +142,7 @@
 			files = (
 				AFCE2AD22BD6339600340825 /* ContentView.swift in Sources */,
 				AFCE2AD02BD6339600340825 /* MemoApp.swift in Sources */,
-				AFCE2ADE2BD63E9000340825 /* MemoAddView.swift in Sources */,
+				AFCE2AE02BD74E2000340825 /* MemoModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

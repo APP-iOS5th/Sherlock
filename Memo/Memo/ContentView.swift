@@ -6,60 +6,81 @@
 //
 
 import SwiftUI
-//import SwiftData
+import SwiftData
 
-//@Model
-struct Memo: Identifiable {
-    let id: UUID = UUID()
-    var text: String
-    var color: Color
-    var created: Date
+struct MemoAddView: View {
     
-    var createdString: String {
-        get {
-            let dateFormatter: DateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            return dateFormatter.string(from: created)
+    @Binding var memoColor: Color
+    @Binding var memoText: String
+    @Binding var isSheetShowing: Bool
+    @Environment(\.modelContext) var modelContext
+    let colors: [Color]
+    
+    var body: some View {
+        VStack {
+            HStack {
+                Button("취소") {
+                    isSheetShowing = false
+                }
+                Spacer()
+                Button("완료") {
+                    
+                    let memo = Memo(text: memoText, color: memoColor created: Date())
+                    modelContext.insert(memo)
+                    isSheetShowing = false
+                }
+                .disabled(memoText.isEmpty)
+            }
+            HStack {
+                ForEach(colors, id:\.self) { color in
+                    Button {
+                        memoColor = color
+                    } label: {
+                        HStack {
+                            Spacer()
+                            if color == memoColor {
+                                Image(systemName: "checkmark.circle")
+                            }
+                            Spacer()
+                        }
+                        .padding()
+                        .frame(height: 50)
+                        .foregroundStyle(Color.white)
+                        .background(color)
+                        .shadow(radius: color == memoColor ? 8 : 0)
+                    }
+                }
+            }
+            Divider()
+                .padding()
+            TextField("메모를 입력하세요", text: $memoText, axis: .vertical)
+                .padding()
+                .foregroundStyle(Color.white)
+                .background(memoColor)
+                .shadow(radius: 3)
+            Spacer()
         }
     }
-}
-
-class MemoStore: ObservableObject {
-    @Published var memos: [Memo] = []
-    //@Environment(\.modelContext) var modelContext
-    
-    func addMemo(_ text: String, color: Color) {
-        let memo = Memo(text: text, color: color, created: Date())
-        memos.insert(memo, at: 0)
-    }
-    
-    func removeMemo(_ targetMemo: Memo)  {
-        if let index = memos.firstIndex(where: { $0.id == targetMemo.id }) {
-            memos.remove(at: index)
-        }
-    }
-    
-    
 }
 
 struct ContentView: View {
     
-    @ObservedObject var memoStore: MemoStore = MemoStore()
+    @Query var memos: [Memo]
+    @Environment(\.modelContext) var modelContext
     
     @State var memoColor: Color = .blue
     @State var memoText: String = ""
     @State var isSheetShowing: Bool = false
     let colors: [Color] = [.blue, .green, .yellow, .indigo, .orange]
-    // @Environment(\.modelContext) var modelContext
     
     var body: some View {
         NavigationStack {
-            List(memoStore.memos) {  memo in
+            List(memos) {  memo in
                 HStack {
                     VStack(alignment: .leading) {
                         Text("\(memo.text)")
                             .font(.title)
-                        Text(memo.createdString)
+                        Text(memo.created.toString)
                             .font(.body)
                             .padding(.top)
                     }
@@ -67,12 +88,12 @@ struct ContentView: View {
                 }
                 .padding()
                 .foregroundStyle(Color.white)
-                .background(memo.color)
+//                .background(memo.color)
                 .shadow(radius: 3)
                 .contextMenu {
                     ShareLink(item: memo.text)
                     Button {
-                        memoStore.removeMemo(memo)
+                        removeMemo(memo)
                     } label: {
                         Image(systemName: "trash.slash")
                         Text("삭제")
@@ -90,14 +111,18 @@ struct ContentView: View {
                 }
             }
             .sheet(isPresented: $isSheetShowing) {
-                MemoAddView(memoStore: memoStore, memoColor: $memoColor, memoText: $memoText, isSheetShowing: $isSheetShowing, colors: colors)
+                MemoAddView(memoColor: $memoColor, memoText: $memoText, isSheetShowing: $isSheetShowing, colors: colors)
             }
         }
     }
-    
+    func removeMemo(_ targetMemo: Memo)  {
+        modelContext.delete(targetMemo)
+    }
 }
+
 
 
 #Preview {
     ContentView()
+        .modelContainer(for: Memo.self, inMemory: true)
 }
