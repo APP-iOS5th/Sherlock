@@ -12,6 +12,8 @@
 		BFE9C2C72BDE7106001CA19C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9C2C62BDE7106001CA19C /* Assets.xcassets */; };
 		BFE9C2CA2BDE7106001CA19C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9C2C92BDE7106001CA19C /* Preview Assets.xcassets */; };
 		BFE9C2D12BDE7128001CA19C /* WordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9C2D02BDE7128001CA19C /* WordInfo.swift */; };
+		BFE9C2D72BDE9A9E001CA19C /* ContentViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9C2D62BDE9A9E001CA19C /* ContentViewViewModel.swift */; };
+		BFE9C2D92BDE9AAF001CA19C /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9C2D82BDE9AAF001CA19C /* WordManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		BFE9C2C62BDE7106001CA19C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFE9C2C92BDE7106001CA19C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BFE9C2D02BDE7128001CA19C /* WordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordInfo.swift; sourceTree = "<group>"; };
+		BFE9C2D62BDE9A9E001CA19C /* ContentViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewViewModel.swift; sourceTree = "<group>"; };
+		BFE9C2D82BDE9AAF001CA19C /* WordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +58,10 @@
 			isa = PBXGroup;
 			children = (
 				BFE9C2C22BDE7105001CA19C /* WordChainAppApp.swift */,
-				BFE9C2C42BDE7105001CA19C /* ContentView.swift */,
 				BFE9C2D02BDE7128001CA19C /* WordInfo.swift */,
+				BFE9C2C42BDE7105001CA19C /* ContentView.swift */,
+				BFE9C2D62BDE9A9E001CA19C /* ContentViewViewModel.swift */,
+				BFE9C2D82BDE9AAF001CA19C /* WordManager.swift */,
 				BFE9C2C62BDE7106001CA19C /* Assets.xcassets */,
 				BFE9C2C82BDE7106001CA19C /* Preview Content */,
 			);
@@ -140,6 +146,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BFE9C2D92BDE9AAF001CA19C /* WordManager.swift in Sources */,
+				BFE9C2D72BDE9A9E001CA19C /* ContentViewViewModel.swift in Sources */,
 				BFE9C2D12BDE7128001CA19C /* WordInfo.swift in Sources */,
 				BFE9C2C52BDE7105001CA19C /* ContentView.swift in Sources */,
 				BFE9C2C32BDE7105001CA19C /* WordChainAppApp.swift in Sources */,
