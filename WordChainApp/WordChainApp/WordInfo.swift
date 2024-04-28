@@ -12,7 +12,7 @@ struct WordInfo: Decodable {
 }
 
 func fetchWordInfo(word: String, compoletion: @escaping (Bool) -> Void) {
-  let urlString = "https://api.dictionaryapi.dev/api/v2/entries/en/<word>"
+  let urlString = "https://api.dictionaryapi.dev/api/v2/entries/en/\(word)"
   guard let url = URL(string: urlString) else {
 	compoletion(false)
 	return
