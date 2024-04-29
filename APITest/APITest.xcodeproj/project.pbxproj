@@ -12,6 +12,7 @@
 		CDDDB1352BDFD1D40041F64F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDDDB1342BDFD1D40041F64F /* Assets.xcassets */; };
 		CDDDB1382BDFD1D40041F64F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CDDDB1372BDFD1D40041F64F /* Preview Assets.xcassets */; };
 		CDDDB1402BDFD1E90041F64F /* SwiftSoup in Frameworks */ = {isa = PBXBuildFile; productRef = CDDDB13F2BDFD1E90041F64F /* SwiftSoup */; };
+		CDDDB1422BDFE8B20041F64F /* SearchWordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CDDDB1412BDFE8B20041F64F /* SearchWordView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		CDDDB1322BDFD1D40041F64F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CDDDB1342BDFD1D40041F64F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CDDDB1372BDFD1D40041F64F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		CDDDB1412BDFE8B20041F64F /* SearchWordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWordView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				CDDDB1302BDFD1D40041F64F /* APITestApp.swift */,
 				CDDDB1322BDFD1D40041F64F /* ContentView.swift */,
+				CDDDB1412BDFE8B20041F64F /* SearchWordView.swift */,
 				CDDDB1342BDFD1D40041F64F /* Assets.xcassets */,
 				CDDDB1362BDFD1D40041F64F /* Preview Content */,
 			);
@@ -145,6 +148,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CDDDB1422BDFE8B20041F64F /* SearchWordView.swift in Sources */,
 				CDDDB1332BDFD1D40041F64F /* ContentView.swift in Sources */,
 				CDDDB1312BDFD1D40041F64F /* APITestApp.swift in Sources */,
 			);
