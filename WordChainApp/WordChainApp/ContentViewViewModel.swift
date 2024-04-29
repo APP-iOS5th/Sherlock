@@ -67,10 +67,11 @@ class ContentViewViewModel: ObservableObject {
 	self.userInput = "" // 입력 초기화
   }
   
+  // 북마크 기능
   func bookmarkCurrentWord() {
 	  bookmarkedWords.insert(currentWord)
   }
-  
+  // 영구저장
   func saveBookmarks() {
 	  UserDefaults.standard.set(Array(bookmarkedWords), forKey: "BookmarkedWords")
   }
@@ -80,7 +81,7 @@ class ContentViewViewModel: ObservableObject {
 		  bookmarkedWords = Set(savedWords)
 	  }
   }
-  
+  // 게임 초기화
   func resetGame() {
 	self.currentWord = wordManager.pickRandomWord()
 	usedWords.removeAll()
