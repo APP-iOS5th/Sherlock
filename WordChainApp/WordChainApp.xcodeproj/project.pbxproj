@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BFE14E2D2BDFA1CD0010D578 /* BookmarksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE14E2C2BDFA1CD0010D578 /* BookmarksView.swift */; };
 		BFE9C2C32BDE7105001CA19C /* WordChainAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9C2C22BDE7105001CA19C /* WordChainAppApp.swift */; };
 		BFE9C2C52BDE7105001CA19C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFE9C2C42BDE7105001CA19C /* ContentView.swift */; };
 		BFE9C2C72BDE7106001CA19C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFE9C2C62BDE7106001CA19C /* Assets.xcassets */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BFE14E2C2BDFA1CD0010D578 /* BookmarksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksView.swift; sourceTree = "<group>"; };
 		BFE9C2BF2BDE7105001CA19C /* WordChainApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WordChainApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFE9C2C22BDE7105001CA19C /* WordChainAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordChainAppApp.swift; sourceTree = "<group>"; };
 		BFE9C2C42BDE7105001CA19C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				BFE9C2C22BDE7105001CA19C /* WordChainAppApp.swift */,
 				BFE9C2D02BDE7128001CA19C /* WordInfo.swift */,
 				BFE9C2C42BDE7105001CA19C /* ContentView.swift */,
+				BFE14E2C2BDFA1CD0010D578 /* BookmarksView.swift */,
 				BFE9C2D62BDE9A9E001CA19C /* ContentViewViewModel.swift */,
 				BFE9C2D82BDE9AAF001CA19C /* WordManager.swift */,
 				BFE9C2C62BDE7106001CA19C /* Assets.xcassets */,
@@ -150,6 +153,7 @@
 				BFE9C2D72BDE9A9E001CA19C /* ContentViewViewModel.swift in Sources */,
 				BFE9C2D12BDE7128001CA19C /* WordInfo.swift in Sources */,
 				BFE9C2C52BDE7105001CA19C /* ContentView.swift in Sources */,
+				BFE14E2D2BDFA1CD0010D578 /* BookmarksView.swift in Sources */,
 				BFE9C2C32BDE7105001CA19C /* WordChainAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
