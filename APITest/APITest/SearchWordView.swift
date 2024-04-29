@@ -15,19 +15,19 @@ struct SearchWordView: View {
         VStack {
             TextField("search", text: $findWord)
                 .onChange(of: findWord) { _, newValue in
-                    if !newValue.isEmpty {
-                        fetchWord(searchWord: newValue)
-                    } else {
-                        words = []
-                    }
+                    fetchWord(searchWord: newValue)
+//                    if !newValue.isEmpty {
+//                    } else {
+//                        // MARK: ISSUE - words가 빈 배열이어도 List가 남아있어서 sleep 걺 ㅠㅠ
+//                        Thread.sleep(forTimeInterval: 0.4)
+//                        words = []
+//                    }
                 }
                 .padding()
             
             List {
-                if words.count > 0 {
-                    ForEach(words, id: \.self) { word in
-                        Text(word)
-                    }
+                ForEach(words, id: \.self) { word in
+                    Text(word)
                 }
             }
         }
@@ -40,7 +40,7 @@ struct SearchWordView: View {
         str += searchWord
         str += "&l1=en&l2=ko&removeDuplicates=true&searchCriteria="
         str += "WORDLIST-ALPHABETICALLY-2-s%3BPREFIX-PRIORITY-2-s%3B"
-        str += "TRANSLITERATED-PRIORITY-2-s%3BFUZZY-PRIORITY-2-s%3B"
+        str += "TRANSLITERATED-PRIORITY-2-s%3BFUZZY-PRIORITY-2-s%3B&"
 //        str += "WORDLIST-ALPHABETICALLY-2-r%3BPREFIX-PRIORITY-2-r%3B"
 //        str += "TRANSLITERATED-PRIORITY-2-r%3BFUZZY-PRIORITY-2-r&"
         str += "env=ko"
@@ -50,16 +50,19 @@ struct SearchWordView: View {
         let task = session.dataTask(with: url) { (data, response, error) in
             if let error = error {
                 print("error > \(error)")
+                words = []
                 return
             }
             
             guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
                 print("No Result!!")
+                words = []
                 return
             }
             
             guard let data = data else {
                 print("No Result Data")
+                words = []
                 return
             }
             
