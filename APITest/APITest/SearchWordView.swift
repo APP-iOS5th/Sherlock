@@ -15,7 +15,7 @@ struct SearchWordView: View {
         VStack {
             TextField("search", text: $findWord)
                 .onChange(of: findWord) { _, newValue in
-                    if newValue.count > 0 {                    
+                    if !newValue.isEmpty {
                         fetchWord(searchWord: newValue)
                     } else {
                         words = []
@@ -24,13 +24,11 @@ struct SearchWordView: View {
                 .padding()
             
             List {
-                ForEach(words, id: \.self) { word in
-                    Text(word)
+                if words.count > 0 {
+                    ForEach(words, id: \.self) { word in
+                        Text(word)
+                    }
                 }
-            }
-            
-            Button("Test") {
-                fetchWord(searchWord: findWord)
             }
         }
     }
@@ -40,11 +38,12 @@ struct SearchWordView: View {
         
         var str = "https://iapi.glosbe.com/iapi3/similar/similarPhrasesMany?p="
         str += searchWord
-        str += "&l1=en&l2=ko&removeDuplicates=true&searchCriteria"
-        str += "=WORDLIST-ALPHABETICALLY-2-s%3BPREFIX-PRIORITY-2-s%3BTRANSLITERATED"
-        str += "-PRIORITY-2-s%3BFUZZY-PRIORITY-2-s%3BWORDLIST-ALPHABETICALLY-2"
-        str += "-r%3BPREFIX-PRIORITY-2-r%3BTRANSLITERATED-PRIORITY"
-        str += "-2-r%3BFUZZY-PRIORITY-2-r&env=ko"
+        str += "&l1=en&l2=ko&removeDuplicates=true&searchCriteria="
+        str += "WORDLIST-ALPHABETICALLY-2-s%3BPREFIX-PRIORITY-2-s%3B"
+        str += "TRANSLITERATED-PRIORITY-2-s%3BFUZZY-PRIORITY-2-s%3B"
+//        str += "WORDLIST-ALPHABETICALLY-2-r%3BPREFIX-PRIORITY-2-r%3B"
+//        str += "TRANSLITERATED-PRIORITY-2-r%3BFUZZY-PRIORITY-2-r&"
+        str += "env=ko"
         
         guard let url = URL(string: str) else { return }
         
