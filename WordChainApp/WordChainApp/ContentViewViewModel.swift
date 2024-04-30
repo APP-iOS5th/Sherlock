@@ -18,18 +18,18 @@ class ContentViewViewModel: ObservableObject {
   @Published var bookmarkedWords = Set<String>()
   @Published var isDarkMode = false
   
-
+  
   
   private var wordManager = WordManager()
   
   init() {
-	  pickRandomWord()
+	pickRandomWord()
   }
   
   func pickRandomWord() {
-	  self.currentWord = wordManager.pickRandomWord()
+	self.currentWord = wordManager.pickRandomWord()
   }
-
+  
   func submitButton() {
 	let word = userInput.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
 	let word2 = currentWord.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
@@ -77,17 +77,24 @@ class ContentViewViewModel: ObservableObject {
   
   // 북마크 기능
   func bookmarkCurrentWord() {
-	  bookmarkedWords.insert(currentWord)
+	bookmarkedWords.insert(currentWord)
   }
   // 영구저장
   func saveBookmarks() {
-	  UserDefaults.standard.set(Array(bookmarkedWords), forKey: "BookmarkedWords")
+	UserDefaults.standard.set(Array(bookmarkedWords), forKey: "BookmarkedWords")
   }
-// 북마크 불러오기
+  // 북마크 불러오기
   func loadBookmarks() {
-	  if let savedWords = UserDefaults.standard.array(forKey: "BookmarkedWords") as? [String] {
-		  bookmarkedWords = Set(savedWords)
+	if let savedWords = UserDefaults.standard.array(forKey: "BookmarkedWords") as? [String] {
+	  bookmarkedWords = Set(savedWords)
+	  if bookmarkedWords.isEmpty {
+		self.alertTitle = "북마크가 없습니다."
+		self.showAlert = true
+	  } else {
+		self.alertTitle = "북마크가 없습니다"
+		self.showAlert = true
 	  }
+	}
   }
   // 게임 초기화
   func resetGame() {
