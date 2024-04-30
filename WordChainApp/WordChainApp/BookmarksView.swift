@@ -9,6 +9,7 @@ import SwiftUI
 struct BookmarksView: View {
   @ObservedObject var viewModel: ContentViewViewModel
   
+  
   var body: some View {
 	List {
 	  ForEach(Array(viewModel.bookmarkedWords).sorted(), id: \.self) { word in

@@ -16,6 +16,9 @@ class ContentViewViewModel: ObservableObject {
   @Published var showAlert = false
   @Published var usedWords = Set<String>()
   @Published var bookmarkedWords = Set<String>()
+  @Published var isDarkMode = false
+  
+
   
   private var wordManager = WordManager()
   
@@ -66,6 +69,11 @@ class ContentViewViewModel: ObservableObject {
 	
 	self.userInput = "" // 입력 초기화
   }
+  // 다크모드 전환
+  func darkModeSwitch() {
+	isDarkMode.toggle()
+	
+  }
   
   // 북마크 기능
   func bookmarkCurrentWord() {
@@ -75,7 +83,7 @@ class ContentViewViewModel: ObservableObject {
   func saveBookmarks() {
 	  UserDefaults.standard.set(Array(bookmarkedWords), forKey: "BookmarkedWords")
   }
-
+// 북마크 불러오기
   func loadBookmarks() {
 	  if let savedWords = UserDefaults.standard.array(forKey: "BookmarkedWords") as? [String] {
 		  bookmarkedWords = Set(savedWords)
